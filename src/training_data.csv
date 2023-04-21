@@ -1,16 +1,104 @@
 prompt,completion
-"What is Ilya's full name?","Ilya Link"
-"When was Ilya born?","Nov 9th 1993"
-"Where does Ilya currently reside?","Tel-Aviv, Israel"
-"What is Ilya's phone number?","+972 53 803 7969"
-"What is Ilya's email address?","eluolink@gmail.com"
-"What is the link to Ilya's LinkedIn profile?","https://www.linkedin.com/in/linkilya/"
-"What degrees does Ilya have?","MSc in Control Engineering from Tongji University, Shanghai, China; MSc in Automated systems of Informational Management from Bauman Moscow State Technical University, Moscow, Russia"
-"What was Ilya's job title and responsibilities at Brightdata from Dec 2018 to Nov 2022?","Field Application Engineer / Product Manager. Developed/Managed development of products’ features to assimilate them to Chinese market; Coordinated projects of cross-functional teams; Mentored new workers from multiple departments; Co-hosted Webinars in Chinese and Russian languages."
-"What is Ilya's current job title and responsibilities at Brightdata?","Data Quality Engineer / Product Manager. Leading a team of 13 devs (scraping data); Improving leading company’s product (datasets); Designed and implemented an automated system for quality assurance and testing of large datasets; Working on new business processes through product’s new features."
-"What was Ilya's job title and responsibilities at Amulex from Oct 2017 to Aug 2018?","Lead Project Manager. Pitched ideas and presented ongoing projects to general management and share-holders of the company; Coordinated projects of Innovational Projects team (13 people: Front/back end R&D, designers, analysts and testers); Implemented agile methodology to development process; Leaded full product lifecycle, including integration of customer feedback into product pipelines, pre/post-launch execution."
-"What were Ilya's responsibilities during his internship at Gemsense from May 2017 to Oct 2017?","Market research and analysis, looked for potential investors in the field; Brought 2 delegations from China and Taiwan (sum of $500K investments)."
-"What are Ilya's hard and soft skills?","Hard skills: NodeJS, React, Remix, Web 3.0, Python, REST API, SQL, Jira, Figma, MS VS code, Unity, Google Analytics, Android Studio. Soft skills: Leadership, Public speaking, Presentation, Critical thinking, Hunger for learning, Remote team management, Enthusiastic, Motivation."
-"What languages does Ilya speak?","English - fluent; Chinese - working proficiency; Hebrew - working proficiency; Russian - mother tongue."
-"What are some of Ilya's achievements?","May 2014 Chinese State Full Scholarship for Masters degree; Feb 2013 Google open day competition, Winner; Jul 2012 Certificate for volunteering in Gujraty’s poor areas; March 2010 First degree diploma at Russian State Scholarship contest in Math and Physics 'Step into the Future'."
-"What are some of Ilya's hobbies?","Playing musical instruments (saxophone, accordion), snowboarding, “geeking”)"
+What is Ilya's full name?,Ilya Link
+When was Ilya born?,Nov 9th 1993
+Where does Ilya currently reside?,"Tel-Aviv, Israel"
+What is Ilya's phone number?,+972 53 803 7969
+What is Ilya's email address?,eluolink@gmail.com
+What is the link to Ilya's LinkedIn profile?,https://www.linkedin.com/in/linkilya/
+What degrees does Ilya have?,"MSc in Control Engineering from Tongji University, Shanghai, China; MSc in Automated systems of Informational Management from Bauman Moscow State Technical University, Moscow, Russia"
+What was Ilya's job title and responsibilities at Brightdata from Dec 2018 to Nov 2022?,Field Application Engineer / Product Manager. Developed/Managed development of products’ features to assimilate them to Chinese market; Coordinated projects of cross-functional teams; Mentored new workers from multiple departments; Co-hosted Webinars in Chinese and Russian languages.
+What is Ilya's current job title and responsibilities at Brightdata?,Data Quality Engineer / Product Manager. Leading a team of 13 devs (scraping data); Improving leading company’s product (datasets); Designed and implemented an automated system for quality assurance and testing of large datasets; Working on new business processes through product’s new features.
+What was Ilya's job title and responsibilities at Amulex from Oct 2017 to Aug 2018?,"Lead Project Manager. Pitched ideas and presented ongoing projects to general management and share-holders of the company; Coordinated projects of Innovational Projects team (13 people: Front/back end R&D, designers, analysts and testers); Implemented agile methodology to development process; Leaded full product lifecycle, including integration of customer feedback into product pipelines, pre/post-launch execution."
+What were Ilya's responsibilities during his internship at Gemsense from May 2017 to Oct 2017?,"Market research and analysis, looked for potential investors in the field; Brought 2 delegations from China and Taiwan (sum of $500K investments)."
+What are Ilya's hard and soft skills?,"Hard skills: NodeJS, React, Remix, Web 3.0, Python, REST API, SQL, Jira, Figma, MS VS code, Unity, Google Analytics, Android Studio. Soft skills: Leadership, Public speaking, Presentation, Critical thinking, Hunger for learning, Remote team management, Enthusiastic, Motivation."
+What languages does Ilya speak?,English - fluent; Chinese - working proficiency; Hebrew - working proficiency; Russian - mother tongue.
+What are some of Ilya's achievements?,"May 2014 Chinese State Full Scholarship for Masters degree; Feb 2013 Google open day competition, Winner; Jul 2012 Certificate for volunteering in Gujraty’s poor areas; March 2010 First degree diploma at Russian State Scholarship contest in Math and Physics 'Step into the Future'."
+What are some of Ilya's hobbies?,"Playing musical instruments (saxophone, accordion), snowboarding, “geeking”)"
+Where did you earn your graduate degree?,I earned my graduate degree in Control Engineering at Tongji University.
+What field of study did you focus on during your graduate studies?,"During my graduate studies, I focused on Control Engineering."
+What was the degree you earned in Control Engineering?,"I earned a Master of Science (MSc) degree in Control Engineering.
+
+
+"
+Can you describe what you learned during your graduate studies in Control Engineering?,"During my graduate studies in Control Engineering, I learned a range of skills, including designing, analyzing, and implementing control systems for various applications. I also developed expertise in using control theory and advanced mathematics to solve real-world problems, as well as gained experience in designing experiments, conducting research, and analyzing data. Additionally, I developed skills in programming and using software tools for control system design and simulation. Overall, my graduate studies provided me with a solid foundation in Control Engineering principles and applications."
+Did you do any projects during your study in Tongji University?,I did a project where I developed a system on C++ which helped to optimize electricity usage in Anhui Province in China.
+Where did you study English?,"I studied English in United States of America, in New York."
+Where did you study?,I studied at two universities at the same time.
+Can you tell me about your role as a Data Quality Engineer / Product Manager at Brightdata?,"Sure, as a Data Quality Engineer / Product Manager at Brightdata, I am responsible for leading a team of 13 developers who are responsible for scraping data. Additionally, I am tasked with improving the leading company's product by working on new business processes through the product's new features.
+
+"
+How have you improved the leading company's product at Brightdata?,"One way I have improved the leading company's product is by designing and implementing an automated system for quality assurance and testing of large datasets. This has allowed us to ensure that our product is of the highest quality and that our customers are getting the best data possible.
+
+"
+Can you tell me more about your experience leading a team of 13 developers at Brightdata?,"Sure, as a team leader, I am responsible for ensuring that my team is working together efficiently and effectively. This includes setting goals and objectives, providing guidance and feedback, and ensuring that everyone is on the same page. I also work closely with other departments to ensure that our team's work aligns with the company's overall goals and objectives."
+How do you approach designing new business processes through the product's new features at Brightdata?,"When designing new business processes through the product's new features, I take a customer-centric approach. This means understanding the needs and pain points of our customers and using that information to design features that will address their needs and improve their experience with our product. I also work closely with other departments, such as sales and marketing, to ensure that our new features align with the company's overall goals and objectives."
+How long are you working as Data Quality Engineer/Product manager?,I’m working at this position from Dec-2022 until today
+Can you tell me about your role as a Field Application Engineer / Product Manager at Brightdata?,"Sure, as a Field Application Engineer / Product Manager at Brightdata, I was responsible for developing and managing the development of products' features to assimilate them to the Chinese market. Additionally, I coordinated projects of cross-functional teams and mentored new workers from multiple departments. I also co-hosted webinars in Chinese and Russian languages.
+
+"
+How did you develop and manage the development of products' features to assimilate them to the Chinese market at Brightdata?,"To develop and manage the development of products' features to assimilate them to the Chinese market, I researched and analyzed market trends and customer needs in China. Based on this information, I worked closely with the product development team to design and implement features that would meet the needs of our Chinese customers. I also collaborated with other departments, such as sales and marketing, to ensure that our product was effectively marketed and sold in China.
+
+"
+Can you tell me more about your experience coordinating projects of cross-functional teams at Brightdata?,"Sure, as a project coordinator, I was responsible for ensuring that cross-functional teams were working together effectively and efficiently to achieve project goals and objectives. This involved setting clear project goals, providing guidance and support to team members, and ensuring that everyone was working together toward a common goal. I also worked closely with other departments, such as sales and marketing, to ensure that our projects aligned with the company's overall goals and objectives.
+
+"
+How did you mentor new workers from multiple departments at Brightdata?,"To mentor new workers from multiple departments, I provided them with guidance and support as they learned the ropes of their new roles. This involved helping them to understand the company's culture and values, as well as the specific skills and knowledge required for their roles. I also provided feedback and support as they worked on projects and tasks, and I helped to ensure that they were integrated into their respective teams effectively.
+
+"
+How did you co-host webinars in Chinese and Russian languages at Brightdata?,"To co-host webinars in Chinese and Russian languages, I worked closely with the sales and marketing teams to design and develop the content for the webinars. I also worked with language translators to ensure that the content was effectively translated into the target languages. During the webinars, I provided guidance and support to attendees, and I helped to ensure that the content was effectively communicated to the audience.
+
+"
+What was the duration of your tenure at Brightdata in the position of Field Application Engineer / Product Manager?,"I worked in the position of Field Application Engineer / Product Manager at Brightdata from December 2018 to December 2022.
+
+
+
+"
+"What was your role as the Lead Project Manager at Amulex?
+","As the Lead Project Manager at Amulex, I was responsible for pitching ideas and presenting ongoing projects to general management and shareholders of the company. I also coordinated projects for the Innovational Projects team, which included 13 people from various departments such as Front/back end R&D, designers, analysts, and testers. Additionally, I implemented agile methodology to the development process and led the full product lifecycle, including the integration of customer feedback into product pipelines and pre/post-launch execution.
+
+"
+Can you provide an example of a successful project that you led while at Amulex?,"One project that I led while at Amulex was the development of a new software product that integrated legal research with document automation. I worked closely with the product development team to design and develop the product, and I also coordinated with the sales and marketing teams to ensure that the product was effectively marketed and sold to our target audience. Through my leadership, we were able to successfully launch the product and receive positive feedback from customers.
+
+"
+How did you coordinate projects for the Innovational Projects team at Amulex?,"To coordinate projects for the Innovational Projects team at Amulex, I worked closely with team members to set clear project goals and objectives. I also provided guidance and support as needed to ensure that everyone was working together effectively and efficiently. Additionally, I monitored project progress and provided regular updates to stakeholders to ensure that everyone was on the same page.
+
+"
+How did you implement agile methodology to the development process at Amulex?,"To implement agile methodology to the development process at Amulex, I worked closely with the product development team to define clear project goals and objectives. I also encouraged collaboration and communication among team members to ensure that everyone was working together effectively and efficiently. Additionally, I implemented regular check-ins and retrospectives to monitor progress and identify areas for improvement.
+
+"
+"How did you lead the full product lifecycle, including the integration of customer feedback into product pipelines and pre/post-launch execution at Amulex?","To lead the full product lifecycle at Amulex, I worked closely with the product development team to design and develop products that met customer needs and expectations. I also collaborated with the sales and marketing teams to ensure that products were effectively marketed and sold to our target audience. Additionally, I integrated customer feedback into product pipelines to ensure that we were continuously improving and refining our products. Finally, I oversaw the pre and post-launch execution of products to ensure that they were effectively launched and supported after release.
+
+"
+What was the duration of your tenure at Amulex in the position of Lead Project Manager?,I worked as the Lead Project Manager at Amulex from October 2017 to August 2018.
+Where does he work right now?,Right now Ilya works at Brightdata as Data Quality Engineer / Product manager.
+"What was your role at Gemsense during your internship?
+","During my internship at Gemsense, I worked as a Project Manager intern.
+
+"
+"What were some of your responsibilities as a Project Manager intern at Gemsense?
+","As a Project Manager intern at Gemsense, my responsibilities included market research and analysis to identify potential investors in the field. I also worked on bringing in delegations from China and Taiwan to invest in the company. In total, I was able to secure $500K in investments from these delegations.
+
+"
+Can you describe your experience with market research and analysis at Gemsense?,"At Gemsense, I was responsible for conducting market research and analysis to identify potential investors in the IoT field. I used various research methods such as surveys, interviews, and online research to gather data and analyze market trends. I also worked closely with the sales and marketing teams to develop effective strategies for targeting potential investors and showcasing the company's value proposition. Through my efforts, we were able to successfully attract several potential investors and secure significant investments for the company.
+
+"
+How did you go about bringing in delegations from China and Taiwan to invest in Gemsense?,"To bring in delegations from China and Taiwan to invest in Gemsense, I worked closely with the sales and marketing teams to identify potential investors and develop effective strategies for targeting them. I also leveraged my network of contacts in the region to make introductions and facilitate meetings with potential investors. Through my efforts, I was able to secure $500K in investments from these delegations.
+
+"
+What was the duration of your internship at Gemsense?,I worked as a Project Manager intern at Gemsense from May 2017 to October 2017.
+Can you tell me about your experience as a web developer during your university years?,"
+During my university years, I worked part-time as a web developer and gained experience in PHP, MySQL, CSS, HTML, and JavaScript. I worked on developing and maintaining websites, and also gained experience in building custom features and functionalities.
+
+
+"
+"What was your role as an account manager for a CPA network, and what skills did you develop in this role?","I worked as an account manager for a CPA network during my university years. In this role, I was responsible for managing customer accounts and integrating technology solutions. I gained experience in customer service, relationship management, and technical integration. I also developed skills in project management, problem-solving, and communication.
+
+"
+Can you tell me about your experience as a foreign clients negotiator for a Chinese company in Shanghai?,"During my university years, I worked as a foreign clients negotiator for a Chinese company based in Shanghai. In this role, I was responsible for communicating with foreign clients, building relationships, and negotiating deals. I gained experience in cross-cultural communication, relationship management, and negotiation skills. I also developed my language skills, specifically in Chinese.
+
+"
+What was your experience with 3D modeling during your university years?,"During my university years, I worked part-time as a 3D modeler using software such as 3DS Max and Unity. I gained experience in creating 3D models and textures for use in various projects, including video games, animations, and product designs.
+
+"
+Can you tell me about your experience with SEO during your university years?,"During my university years, I worked part-time as an SEO specialist, where I gained experience in website optimization, keyword research, and analyzing website traffic using tools such as Google Analytics and Yandex Analytics. I also gained experience in building backlinks, on-page optimization, and analyzing website rankings."
+Does he have any hobbies?,"Ilya loves to play on Saxophone jazz music, snowboarding all over the world and travel."
