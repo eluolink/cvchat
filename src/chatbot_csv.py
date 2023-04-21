@@ -24,6 +24,7 @@ st.markdown(
 # Allow the user to enter their OpenAI API key
 user_api_key = st.secrets["openai_api"]
 
+
 async def main():
     
     # Check if the user has entered an OpenAI API key
@@ -39,8 +40,11 @@ async def main():
         os.environ["OPENAI_API_KEY"] = user_api_key
         
         # Allow the user to upload a CSV file
-        uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
-        print(uploaded_file)
+        #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
+        path = os.path.dirname(__file__)
+        uploaded_file = open(path+'/training_data.csv',"rb")
+        #uploaded_file = uploaded_file.read("training_data.csv")
+        #print(uploaded_file)
         # If the user has uploaded a file, display it in an expander
         if uploaded_file is not None:
             def show_user_file(uploaded_file):
