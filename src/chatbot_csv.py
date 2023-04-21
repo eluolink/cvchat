@@ -164,7 +164,7 @@ async def main():
 
                     # If the chat history has not yet been initialized, initialize it now
                     if 'generated' not in st.session_state:
-                        st.session_state['generated'] = ["Welcome to CVChat, an AI that knows Ilya better then anyone else! 💬"]
+                        st.session_state['generated'] = ["Let me know what information you want to know, so that it'll be clear as day, that Ilya is the best candidate for Position at <company_name>"]
 
                     if 'past' not in st.session_state:
                         st.session_state['past'] = ["Hey ! 👋"]
