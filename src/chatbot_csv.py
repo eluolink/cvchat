@@ -40,7 +40,7 @@ async def main():
         
         # Allow the user to upload a CSV file
         #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
-        uploaded_file = pd.read_csv("./training_data.csv")
+        uploaded_file = "training_data.csv"
         # If the user has uploaded a file, display it in an expander
         if uploaded_file is not None:
             def show_user_file(uploaded_file):
