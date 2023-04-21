@@ -219,11 +219,9 @@ async def main():
     # Create an expander for the "About" section
     about = st.sidebar.expander("About 🤖")
     
-    # Write information about the chatbot in the "About" section
-    about.write("#### ChatBot-CSV is an AI chatbot featuring conversational memory, designed to enable users to discuss their CSV data in a more intuitive manner. 📄")
-    about.write("#### He employs large language models to provide users with seamless, context-aware natural language interactions for a better understanding of their CSV data. 🌐")
-    about.write("#### Powered by [Langchain](https://github.com/hwchase17/langchain), [OpenAI](https://platform.openai.com/docs/models/gpt-3-5) and [Streamlit](https://github.com/streamlit/streamlit) ⚡")
-    about.write("#### Source code : [yvann-hub/ChatBot-CSV](https://github.com/yvann-hub/ChatBot-CSV)")
+    # Write information about the chatbot in the "About" section 
+    about.write("#### If you're satisfied with the answers you saw - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
+    
 
 #Run the main function using asyncio
 if __name__ == "__main__":
