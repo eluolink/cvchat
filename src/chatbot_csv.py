@@ -125,7 +125,7 @@ async def main():
                         st.session_state['reset_chat'] = True
 
                     # Allow the user to select a chatbot model to use
-                    MODEL = st.selectbox(label='Model', options=['gpt-3.5-turbo','gpt-4'])
+                    MODEL = st.selectbox(label='Model', options=['gpt-3.5-turbo'])
 
                 # If the chat history has not yet been initialized, do so now
                 if 'history' not in st.session_state:
