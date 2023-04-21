@@ -48,10 +48,10 @@ async def main():
         # If the user has uploaded a file, display it in an expander
         if uploaded_file is not None:
             def show_user_file(uploaded_file):
-                file_container = st.expander("Your CSV file :")
+                #file_container = st.expander("Your CSV file :")
                 shows = pd.read_csv(uploaded_file)
                 uploaded_file.seek(0)
-                file_container.write(shows)
+                #file_container.write(shows)
                 
             show_user_file(uploaded_file)
             
