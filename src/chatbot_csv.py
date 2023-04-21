@@ -22,10 +22,7 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Allow the user to enter their OpenAI API key
-user_api_key = st.sidebar.text_input(
-    label="#### Your OpenAI API key 👇",
-    placeholder="Paste your openAI API key, sk-",
-    type="password")
+user_api_key = st.secrets["openai_api"]
 
 async def main():
     
