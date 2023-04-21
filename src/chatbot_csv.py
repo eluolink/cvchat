@@ -188,7 +188,7 @@ async def main():
                                 
                                 st.session_state['history'] = []
                                 st.session_state['past'] = ["Hey ! 👋"]
-                                st.session_state['generated'] = ["Welcome to CVChat, an AI that knows Ilya better then anyone else! 💬"]
+                                st.session_state['generated'] = ["Let me know what information you want to know, so that it'll be clear as day, that Ilya is the best candidate for Position at <company_name>"]
                                 response_container.empty()
                                 st.session_state['reset_chat'] = False
 
