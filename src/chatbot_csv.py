@@ -14,11 +14,11 @@ from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.vectorstores import FAISS
 
 # Set the Streamlit page configuration, including the layout and page title/icon
-st.set_page_config(layout="wide", page_icon="💬", page_title="ChatBot-CSV")
+st.set_page_config(layout="centered", page_icon="💬", page_title="CVChat")
 
 # Display the header for the application using HTML markdown
 st.markdown(
-    "<h1 style='text-align: center;'>ChatBot-CSV, Talk with your  csv-data ! 💬</h1>",
+    "<h1 style='text-align: center;'>Welcome to CVChat, an AI that knows Ilya better then anyone else! 💬</h1>",
     unsafe_allow_html=True)
 
 # Allow the user to enter their OpenAI API key
@@ -164,7 +164,7 @@ async def main():
 
                     # If the chat history has not yet been initialized, initialize it now
                     if 'generated' not in st.session_state:
-                        st.session_state['generated'] = ["Hello ! Ask me anything about " + uploaded_file.name + " 🤗"]
+                        st.session_state['generated'] = ["Welcome to CVChat, an AI that knows Ilya better then anyone else! 💬"]
 
                     if 'past' not in st.session_state:
                         st.session_state['past'] = ["Hey ! 👋"]
@@ -180,7 +180,7 @@ async def main():
                         # Create a form for the user to enter their query
                         with st.form(key='my_form', clear_on_submit=True):
                             
-                            user_input = st.text_input("Query:", placeholder="Talk about your csv data here (:", key='input')
+                            user_input = st.text_input("Query:", placeholder="You can ask questions about Ilya's education, skills, expirience that he had...", key='input')
                             submit_button = st.form_submit_button(label='Send')
                             
                             # If the "reset_chat" flag has been set, reset the chat history and generated messages
@@ -188,7 +188,7 @@ async def main():
                                 
                                 st.session_state['history'] = []
                                 st.session_state['past'] = ["Hey ! 👋"]
-                                st.session_state['generated'] = ["Hello ! Ask me anything about " + uploaded_file.name + " 🤗"]
+                                st.session_state['generated'] = ["Welcome to CVChat, an AI that knows Ilya better then anyone else! 💬"]
                                 response_container.empty()
                                 st.session_state['reset_chat'] = False
 
