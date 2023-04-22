@@ -30,7 +30,7 @@ user_api_key = st.secrets["openai_api"]
 path = os.path.dirname(__file__)
 
 key_dict = json.loads(st.secrets["textkey"])
-creds = service_account.Credentials.from_service_account_info(key_dict)
+creds = credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="cvchat")
 
 
