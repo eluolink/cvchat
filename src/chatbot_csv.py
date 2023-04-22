@@ -34,7 +34,7 @@ if not firebase_admin._apps:
     key_dict = credentials.Certificate(json.loads(st.secrets["textkey"]))
     firebase_admin.initialize_app(key_dict)
 db = firestore.client()
-doc_ref = db.collection("messages_collection").document("test")
+
 
 async def main():
     
@@ -51,6 +51,8 @@ async def main():
         os.environ["OPENAI_API_KEY"] = user_api_key
         if 'auth' not in st.session_state:
             st.session_state['auth'] = False
+        if 'username' not in st.session_state:
+            st.session_state['username'] = ''
         if st.session_state['auth']== False:
             username = st.text_input('Please create a nickname for yourself')
             login_button = st.button('Login')
@@ -60,6 +62,8 @@ async def main():
             
             # Allow the user to upload a CSV file
             #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
+            st.session_state['username']=username
+            doc_ref = db.collection("messages_collection").document(st.session_state['username'])
             path = os.path.dirname(__file__)
             uploaded_file = open(path+'/training_data.csv',"rb")
             #uploaded_file = uploaded_file.read("training_data.csv")
