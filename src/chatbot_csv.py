@@ -222,15 +222,15 @@ async def main():
                             for i in range(len(st.session_state['generated'])):
                                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
                                 message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
-                                now = datetime.now()
-                                if i>0:
-                                   doc_ref.update({
+                                
+                        now = datetime.now()        
+                        doc_ref.update({
                                        "message": firestore.ArrayUnion([{
                                             "question": st.session_state["past"][i],
                                             "answer": st.session_state["generated"][i],
                                             "timestamp": now.strftime("%d/%m/%Y %H:%M:%S")
                                         }])
-                                    })
+                                    })          
                 #st.write(chain)
 
             except Exception as e:
