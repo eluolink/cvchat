@@ -51,8 +51,6 @@ async def main():
         os.environ["OPENAI_API_KEY"] = user_api_key
         if 'auth' not in st.session_state:
             st.session_state['auth'] = False
-        if 'username_name' not in st.session_state:
-            st.session_state['username_name'] = ''
         if st.session_state['auth']== False:
             username = st.text_input('Please create a nickname for yourself')
             login_button = st.button('Login')
@@ -62,8 +60,8 @@ async def main():
             
             # Allow the user to upload a CSV file
             #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
-            st.session_state['username_name']=username
-            doc_ref = db.collection("messages_collection").document(st.session_state['username_name'])
+           
+            doc_ref = db.collection("messages_collection").document(username)
             path = os.path.dirname(__file__)
             uploaded_file = open(path+'/training_data.csv',"rb")
             #uploaded_file = uploaded_file.read("training_data.csv")
