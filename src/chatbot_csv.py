@@ -35,7 +35,7 @@ if not firebase_admin._apps:
     firebase_admin.initialize_app(key_dict)
 db = firestore.client()
 doc_ref = db.collection("messages_collection").document("test")
-
+user_api_key = "s"
 async def main():
     
     # Check if the user has entered an OpenAI API key
@@ -49,14 +49,6 @@ async def main():
     else:
         # Set the OpenAI API key as an environment variable
         os.environ["OPENAI_API_KEY"] = user_api_key
-        @st.cache_data
-        def user(account_text):
-            account_text = st.text_input("text input")
-            account = st.button("Login","login_button")
-            if account_text and account:
-                return account_text
-        
-        
         # Allow the user to upload a CSV file
         #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
         path = os.path.dirname(__file__)
