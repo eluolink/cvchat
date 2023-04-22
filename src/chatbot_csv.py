@@ -15,8 +15,8 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.vectorstores import FAISS
 
-from google.cloud import firestore
 from firebase_admin import credentials
+from firebase_admin import firestore
 from datetime import datetime
 
 # Set the Streamlit page configuration, including the layout and page title/icon
@@ -31,10 +31,8 @@ st.markdown(
 user_api_key = st.secrets["openai_api"]
 path = os.path.dirname(__file__)
 key_dict = json.loads(st.secrets["textkey"])
-
-cred = credentials.Certificate(key_dict)
-db = firebase_admin.App(cred)
-
+firebase_admin.initialize_app(key_dict)
+db = firestore.client()
 
 
 async def main():
