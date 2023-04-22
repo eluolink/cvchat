@@ -18,8 +18,7 @@ from langchain.vectorstores import FAISS
 from firebase_admin import credentials
 from firebase_admin import firestore
 from datetime import datetime
-key_dict = credentials.Certificate(json.loads(st.secrets["textkey"]))
-firebase_admin.initialize_app(key_dict)
+
 # Set the Streamlit page configuration, including the layout and page title/icon
 st.set_page_config(layout="centered", page_icon="💬", page_title="CVChat")
 
@@ -31,7 +30,9 @@ st.markdown(
 # Allow the user to enter their OpenAI API key
 user_api_key = st.secrets["openai_api"]
 path = os.path.dirname(__file__)
-
+if not firebase_admin._apps:
+    key_dict = credentials.Certificate(json.loads(st.secrets["textkey"]))
+    firebase_admin.initialize_app(key_dict)
 db = firestore.client()
 
 
