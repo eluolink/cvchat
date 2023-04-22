@@ -51,8 +51,8 @@ async def main():
         os.environ["OPENAI_API_KEY"] = user_api_key
         if 'auth' not in st.session_state:
             st.session_state['auth'] = False
-        if 'username' not in st.session_state:
-            st.session_state['username'] = ''
+        if 'username_name' not in st.session_state:
+            st.session_state['username_name'] = ''
         if st.session_state['auth']== False:
             username = st.text_input('Please create a nickname for yourself')
             login_button = st.button('Login')
@@ -62,8 +62,8 @@ async def main():
             
             # Allow the user to upload a CSV file
             #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
-            st.session_state['username']=username
-            doc_ref = db.collection("messages_collection").document(st.session_state['username'])
+            st.session_state['username_name']=username
+            doc_ref = db.collection("messages_collection").document(st.session_state['username_name'])
             path = os.path.dirname(__file__)
             uploaded_file = open(path+'/training_data.csv',"rb")
             #uploaded_file = uploaded_file.read("training_data.csv")
@@ -252,7 +252,7 @@ async def main():
     about = st.sidebar.expander("About 🤖")
     
     # Write information about the chatbot in the "About" section 
-    about.write("#### If you're satisfied with the answers you saw - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
+    about.write("#### If you're satisfied with the answers - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
     logout = about.button('Logout')
     if logout:
         st.session_state['auth']=False
