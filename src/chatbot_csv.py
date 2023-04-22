@@ -49,20 +49,23 @@ async def main():
     else:
         # Set the OpenAI API key as an environment variable
         os.environ["OPENAI_API_KEY"] = user_api_key
-        username = ''
+        
         if 'auth' not in st.session_state:
             st.session_state['auth'] = False
+        if 'nick' not in st.session_state:
+            st.session_state['nick'] = ''
         if st.session_state['auth']== False:
             username = st.text_input('Please create a nickname for yourself')
             login_button = st.button('Login')
             if username and login_button:
                 st.session_state['auth'] = True
+                st.session_state['nick'] = username
         else:
             
             # Allow the user to upload a CSV file
             #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
            
-            doc_ref = db.collection("messages_collection").document(username)
+            doc_ref = db.collection("messages_collection").document(st.session_state['nick'])
             path = os.path.dirname(__file__)
             uploaded_file = open(path+'/training_data.csv',"rb")
             #uploaded_file = uploaded_file.read("training_data.csv")
