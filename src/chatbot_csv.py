@@ -249,7 +249,9 @@ async def main():
     
     # Write information about the chatbot in the "About" section 
     about.write("#### If you're satisfied with the answers you saw - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
-    
+    logout = st.button('Logout')
+    if logout:
+        st.session_state['auth']=False
 
 #Run the main function using asyncio
 if __name__ == "__main__":
