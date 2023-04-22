@@ -30,7 +30,7 @@ st.markdown(
 # Allow the user to enter their OpenAI API key
 user_api_key = st.secrets["openai_api"]
 path = os.path.dirname(__file__)
-key_dict = credentials.Certificate(st.secrets["textkey"])
+key_dict = credentials.Certificate(json.loads(st.secrets["textkey"]))
 firebase_admin.initialize_app(key_dict)
 db = firestore.client()
 
