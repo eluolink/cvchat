@@ -4,6 +4,8 @@ import streamlit as st
 import tempfile
 import pandas as pd
 import asyncio
+import firebase_admin
+import json
 
 # Import modules needed for building the chatbot application
 from streamlit_chat import message
@@ -12,6 +14,9 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.vectorstores import FAISS
+from firebase_admin import credentials
+from google.cloud import firestore
+from datetime import datetime
 
 # Set the Streamlit page configuration, including the layout and page title/icon
 st.set_page_config(layout="centered", page_icon="💬", page_title="CVChat")
@@ -23,6 +28,11 @@ st.markdown(
 
 # Allow the user to enter their OpenAI API key
 user_api_key = st.secrets["openai_api"]
+path = os.path.dirname(__file__)
+
+key_dict = json.loads(st.secrets["textkey"])
+creds = firestore.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds, project="cvchat")
 
 
 async def main():
@@ -211,6 +221,16 @@ async def main():
                             for i in range(len(st.session_state['generated'])):
                                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
                                 message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
+                                doc_ref = db.collection("messages_collection").document("test")
+                                now = datetime.now()
+                                if i>0:
+                                   doc_ref.update({
+                                       "message": firestore.ArrayUnion([{
+                                            "question": st.session_state["past"][i],
+                                            "answer": st.session_state["generated"][i],
+                                            "timestamp": now.strftime("%d/%m/%Y %H:%M:%S")
+                                        }])
+                                    })
                 #st.write(chain)
 
             except Exception as e:
