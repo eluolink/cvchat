@@ -5,6 +5,7 @@ import tempfile
 import pandas as pd
 import asyncio
 import json
+import firebase_admin
 
 # Import modules needed for building the chatbot application
 from streamlit_chat import message
@@ -13,8 +14,9 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.vectorstores import FAISS
-from firebase_admin import credentials
+
 from google.cloud import firestore
+from firebase_admin import credentials
 from datetime import datetime
 
 # Set the Streamlit page configuration, including the layout and page title/icon
@@ -29,8 +31,9 @@ st.markdown(
 user_api_key = st.secrets["openai_api"]
 path = os.path.dirname(__file__)
 key_dict = json.loads(st.secrets["textkey"])
-creds = credentials.service_account(key_dict)
-db = firestore.Client(credentials=creds, project="cvchat")
+
+cred = credentials.Certificate(key_dict)
+firebase_admin.initialize_app(cred)
 
 
 async def main():
