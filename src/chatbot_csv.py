@@ -28,9 +28,8 @@ st.markdown(
 # Allow the user to enter their OpenAI API key
 user_api_key = st.secrets["openai_api"]
 path = os.path.dirname(__file__)
-
 key_dict = json.loads(st.secrets["textkey"])
-creds = credentials.from_service_account_info(key_dict)
+creds = credentials.service_account(key_dict)
 db = firestore.Client(credentials=creds, project="cvchat")
 
 
