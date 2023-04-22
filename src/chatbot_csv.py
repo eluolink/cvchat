@@ -34,7 +34,7 @@ if not firebase_admin._apps:
     key_dict = credentials.Certificate(json.loads(st.secrets["textkey"]))
     firebase_admin.initialize_app(key_dict)
 db = firestore.client()
-
+doc_ref = db.collection("messages_collection").document("test")
 
 async def main():
     
@@ -222,7 +222,6 @@ async def main():
                             for i in range(len(st.session_state['generated'])):
                                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
                                 message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
-                                doc_ref = db.collection("messages_collection").document("test")
                                 now = datetime.now()
                                 if i>0:
                                    doc_ref.update({
