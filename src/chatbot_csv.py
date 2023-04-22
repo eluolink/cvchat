@@ -33,7 +33,7 @@ path = os.path.dirname(__file__)
 key_dict = json.loads(st.secrets["textkey"])
 
 cred = credentials.Certificate(key_dict)
-db = firebase_admin.initialize_app(cred,"cvchat")
+db = firebase_admin.initialize_app(cred,name="cvchat")
 
 
 
