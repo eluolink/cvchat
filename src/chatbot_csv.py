@@ -215,23 +215,22 @@ async def main():
 
                     # If there are generated messages to display
                     if st.session_state['generated']:
-                        now = datetime.now()
-                        doc_ref.update({
-                                       "message": firestore.ArrayUnion([{
-                                            "question": st.session_state["past"],
-                                            "answer": st.session_state["generated"],
-                                            "timestamp": now.strftime("%d/%m/%Y %H:%M:%S")
-                                        }])
-                                    })
+                        
                         # Display the chat history
                         with response_container:
                             
                             for i in range(len(st.session_state['generated'])):
                                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
                                 message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
-                                
-                                
-                                   
+                                now = datetime.now()
+                                if i>0:
+                                   doc_ref.update({
+                                       "message": firestore.ArrayUnion([{
+                                            "question": st.session_state["past"],
+                                            "answer": st.session_state["generated"],
+                                            "timestamp": now.strftime("%d/%m/%Y %H:%M:%S")
+                                        }])
+                                    })
                 #st.write(chain)
 
             except Exception as e:
