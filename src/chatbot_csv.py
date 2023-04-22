@@ -35,7 +35,7 @@ if not firebase_admin._apps:
     firebase_admin.initialize_app(key_dict)
 db = firestore.client()
 doc_ref = db.collection("messages_collection").document("test")
-user_api_key = "s"
+
 async def main():
     
     # Check if the user has entered an OpenAI API key
