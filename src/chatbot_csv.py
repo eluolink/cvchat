@@ -65,7 +65,7 @@ async def main():
             # Allow the user to upload a CSV file
             #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
            
-            doc_ref = db.collection("messages_collection").document(st.session_state['nick'])
+            doc_ref = db.collection("messages_collection").document(st.session_state['nick']).set()
             path = os.path.dirname(__file__)
             uploaded_file = open(path+'/training_data.csv',"rb")
             #uploaded_file = uploaded_file.read("training_data.csv")
