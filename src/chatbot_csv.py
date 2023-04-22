@@ -256,7 +256,7 @@ async def main():
     
     # Write information about the chatbot in the "About" section 
     about.write("#### If you're satisfied with the answers - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
-    logout = about.button('Logout')
+    logout = st.sidebar.button('Logout')
     if logout:
         st.session_state['auth']=False
 
