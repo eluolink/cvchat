@@ -54,7 +54,7 @@ async def main():
             account_text = st.text_input("text input")
             account = st.button("Login","login_button")
             if account_text and account:
-                return df
+                return account_text
         
         
         # Allow the user to upload a CSV file
