@@ -226,8 +226,8 @@ async def main():
                                 if i>0:
                                    doc_ref.update({
                                        "message": firestore.ArrayUnion([{
-                                            "question": st.session_state["past"],
-                                            "answer": st.session_state["generated"],
+                                            "question": st.session_state["past"][i],
+                                            "answer": st.session_state["generated"][i],
                                             "timestamp": now.strftime("%d/%m/%Y %H:%M:%S")
                                         }])
                                     })
