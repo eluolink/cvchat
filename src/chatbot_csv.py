@@ -49,6 +49,8 @@ async def main():
     else:
         # Set the OpenAI API key as an environment variable
         os.environ["OPENAI_API_KEY"] = user_api_key
+        if 'auth' not in st.session_state:
+            st.session_state['auth'] = False
         if st.session_state['auth']== False:
             username = st.text_input('Please create a nickname for yourself')
             login_button = st.button('Login')
