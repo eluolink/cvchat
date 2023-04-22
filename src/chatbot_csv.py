@@ -4,7 +4,6 @@ import streamlit as st
 import tempfile
 import pandas as pd
 import asyncio
-import firebase_admin
 import json
 
 # Import modules needed for building the chatbot application
