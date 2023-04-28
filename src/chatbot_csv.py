@@ -72,8 +72,8 @@ async def main():
                 holder2.empty()
                 
         if st.session_state['auth']:
-            username = st.empty()
-            login_button = st.empty()
+            holder1.empty()
+            holder2.empty()
             # Allow the user to upload a CSV file
             #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
             # Retrieve all documents from "knowledge_base" collection
