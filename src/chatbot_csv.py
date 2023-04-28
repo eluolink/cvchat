@@ -81,7 +81,7 @@ async def main():
 
             # Define an empty list to hold the data
             data = []
-
+            path = os.path.dirname(__file__)
             # Iterate through each document and append the question and answer fields to the data list
             for doc in docs:
                 data.append(['"' + doc.to_dict()['question'] + '"', '"' + doc.to_dict()['answer'] + '"'])
