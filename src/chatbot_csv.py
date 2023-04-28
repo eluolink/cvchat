@@ -67,7 +67,7 @@ async def main():
             if login_button and username:
                 st.session_state['auth'] = True
                 st.session_state['nick'] = username
-                doc_ref = db.collection("messages_collection").document(st.session_state['nick']).set({"id":1})
+                doc_ref = db.collection("messages_collection").document(st.session_state['nick']).set({"id":st.session_state['nick']})
                 holder1.empty()
                 holder2.empty()
                 
