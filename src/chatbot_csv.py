@@ -87,10 +87,10 @@ async def main():
                 data.append(['"' + doc.to_dict()['question'] + '"', '"' + doc.to_dict()['answer'] + '"'])
 
             # Load the existing CSV file into a Pandas DataFrame and verify that each row has exactly two columns
-            df = pd.read_csv('training_data.csv', header=0, names=['prompt', 'completion'])
+            df = pd.read_csv('./training_data.csv', header=0, names=['prompt', 'completion'])
             if len(df.columns) != 2:
                 df = df[['prompt', 'completion']]
-                df.to_csv('training_data.csv', index=False, quoting=2)
+                df.to_csv('./training_data.csv', index=False, quoting=2)
 
             # Append the new data to the DataFrame
             new_df = pd.DataFrame(data, columns=['prompt', 'completion'])
@@ -101,20 +101,20 @@ async def main():
                 raise ValueError("The CSV file should have exactly two columns: 'prompt' and 'completion'.")
 
             # Write the updated DataFrame back to the CSV file, in append mode with double quotes around each field
-            df.to_csv('training_data.csv', mode='w', header=True, index=False, quoting=1)
+            df.to_csv('./training_data.csv', mode='w', header=True, index=False, quoting=1)
 
             # Delete all the processed documents from "knowledge_base" collection
             for doc in docs:
                 doc.reference.delete()
 
-            if os.path.exists("training_data.csv.pkl"):
-                os.remove("training_data.csv.pkl")
+            if os.path.exists("./training_data.csv.pkl"):
+                os.remove("./training_data.csv.pkl")
 
 
 
             doc_ref = db.collection("messages_collection").document(st.session_state['nick'])
             path = os.path.dirname(__file__)
-            uploaded_file = open('training_data.csv',"rb")
+            uploaded_file = open('./training_data.csv',"rb")
             #uploaded_file = uploaded_file.read("training_data.csv")
             #print(uploaded_file)
             # If the user has uploaded a file, display it in an expander
