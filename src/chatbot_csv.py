@@ -60,17 +60,17 @@ async def main():
             st.session_state['auth'] = True
             
         else:
-            username = st.empty()
-            username = st.text_input('Please create a nickname for yourself')
-            login_button = st.empty()
-            login_button = st.button('Login')
+            holder1 = st.empty()
+            holder2 = st.empty()
+            username = holder1.text_input('Please create a nickname for yourself')
+            login_button = holder2.button('Login')
             if login_button and username:
                 st.session_state['auth'] = True
                 st.session_state['nick'] = username
                 doc_ref = db.collection("messages_collection").document(st.session_state['nick']).set({"id":1})
-                login_button.empty()
-                username.empty()
-
+                holder1.empty()
+                holder2.empty()
+                
         if st.session_state['auth']:
             username = st.empty()
             login_button = st.empty()
