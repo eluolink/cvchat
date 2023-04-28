@@ -6,6 +6,7 @@ import pandas as pd
 import asyncio
 import json
 import firebase_admin
+import csv
 
 # Import modules needed for building the chatbot application
 from streamlit_chat import message
@@ -20,7 +21,7 @@ from firebase_admin import firestore
 from datetime import datetime
 
 # Set the Streamlit page configuration, including the layout and page title/icon
-st.set_page_config(layout="centered", page_icon="💬", page_title="CVChat")
+st.set_page_config(layout="wide", page_icon="💬", page_title="CVChat")
 
 # Display the header for the application using HTML markdown
 st.markdown(
@@ -29,12 +30,16 @@ st.markdown(
 
 # Allow the user to enter their OpenAI API key
 user_api_key = st.secrets["openai_api"]
+
 path = os.path.dirname(__file__)
 if not firebase_admin._apps:
     key_dict = credentials.Certificate(json.loads(st.secrets["textkey"]))
     firebase_admin.initialize_app(key_dict)
 db = firestore.client()
-
+if 'auth' not in st.session_state:
+            st.session_state['auth'] = False
+if 'nick' not in st.session_state:
+            st.session_state['nick'] = ''
 
 async def main():
     
@@ -49,35 +54,76 @@ async def main():
     else:
         # Set the OpenAI API key as an environment variable
         os.environ["OPENAI_API_KEY"] = user_api_key
-        
-        if 'auth' not in st.session_state:
-            st.session_state['auth'] = False
-        if 'nick' not in st.session_state:
-            st.session_state['nick'] = ''
-        if st.session_state['auth']== False:
+        query_params = st.experimental_get_query_params()
+
+        if 'auth' in query_params and query_params['auth'] == 'True':
+            st.session_state['auth'] = True
+            
+        else:
+            username = st.empty()
             username = st.text_input('Please create a nickname for yourself')
+            login_button = st.empty()
             login_button = st.button('Login')
-            if username and login_button:
+            if login_button and username:
                 st.session_state['auth'] = True
                 st.session_state['nick'] = username
                 doc_ref = db.collection("messages_collection").document(st.session_state['nick']).set({"id":1})
-        else:
-            
+                login_button.empty()
+                username.empty()
+
+        if st.session_state['auth']:
+            username = st.empty()
+            login_button = st.empty()
             # Allow the user to upload a CSV file
             #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
-           
+            # Retrieve all documents from "knowledge_base" collection
+            docs = db.collection('knowledge_base').stream()
+
+            # Define an empty list to hold the data
+            data = []
+
+            # Iterate through each document and append the question and answer fields to the data list
+            for doc in docs:
+                data.append(['"' + doc.to_dict()['question'] + '"', '"' + doc.to_dict()['answer'] + '"'])
+
+            # Load the existing CSV file into a Pandas DataFrame and verify that each row has exactly two columns
+            df = pd.read_csv('training_data.csv', header=0, names=['prompt', 'completion'])
+            if len(df.columns) != 2:
+                df = df[['prompt', 'completion']]
+                df.to_csv('training_data.csv', index=False, quoting=2)
+
+            # Append the new data to the DataFrame
+            new_df = pd.DataFrame(data, columns=['prompt', 'completion'])
+            df = pd.concat([df, new_df], ignore_index=True)
+
+            # Verify that each row in the DataFrame has exactly two columns
+            if len(df.columns) != 2:
+                raise ValueError("The CSV file should have exactly two columns: 'prompt' and 'completion'.")
+
+            # Write the updated DataFrame back to the CSV file, in append mode with double quotes around each field
+            df.to_csv('training_data.csv', mode='w', header=True, index=False, quoting=1)
+
+            # Delete all the processed documents from "knowledge_base" collection
+            for doc in docs:
+                doc.reference.delete()
+
+            if os.path.exists("training_data.csv.pkl"):
+                os.remove("training_data.csv.pkl")
+
+
+
             doc_ref = db.collection("messages_collection").document(st.session_state['nick'])
             path = os.path.dirname(__file__)
-            uploaded_file = open(path+'/training_data.csv',"rb")
+            uploaded_file = open('training_data.csv',"rb")
             #uploaded_file = uploaded_file.read("training_data.csv")
             #print(uploaded_file)
             # If the user has uploaded a file, display it in an expander
             if uploaded_file is not None:
                 def show_user_file(uploaded_file):
-                    #file_container = st.expander("Your CSV file :")
+                    file_container = st.expander("Your CSV file :")
                     shows = pd.read_csv(uploaded_file)
                     uploaded_file.seek(0)
-                    #file_container.write(shows)
+                    file_container.write(shows)
                     
                 show_user_file(uploaded_file)
                 
@@ -89,10 +135,12 @@ async def main():
                 )
         
             if uploaded_file :
+                print('About to start')
                 try :
                     # Define an asynchronous function for storing document embeddings using Langchain and FAISS
+                    print('About to start2')
                     async def storeDocEmbeds(file, filename):
-                        
+                        print('Starting to create vectors...')
                         # Write the uploaded file to a temporary file
                         with tempfile.NamedTemporaryFile(mode="wb", delete=False) as tmp_file:
                             tmp_file.write(file)
@@ -100,13 +148,13 @@ async def main():
 
                         # Load the data from the CSV file using Langchain
                         loader = CSVLoader(file_path=tmp_file_path, encoding="utf-8")
-                        data = loader.load()
+                        dataset = loader.load()
 
                         # Create an embeddings object using Langchain
                         embeddings = OpenAIEmbeddings()
-                        
+                        print('Starting to create vectors...Stage 2!')
                         # Store the embeddings vectors using FAISS
-                        vectors = FAISS.from_documents(data, embeddings)
+                        vectors = FAISS.from_documents(dataset, embeddings)
                         os.remove(tmp_file_path)
 
                         # Save the vectors to a pickle file
@@ -176,8 +224,9 @@ async def main():
                             file = uploaded_file.read()
                             
                             # Generate embeddings vectors for the file
+                            print('about to process your embeds')
                             vectors = await getDocEmbeds(file, uploaded_file.name)
-
+                            print('about to process your embeds part #2')
                             # Use the Langchain ConversationalRetrievalChain to set up the chatbot
                             chain = ConversationalRetrievalChain.from_llm(llm = ChatOpenAI(temperature=0.0,model_name=MODEL),
                                                                         retriever=vectors.as_retriever())
