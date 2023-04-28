@@ -79,29 +79,35 @@ async def main():
             # Retrieve all documents from "knowledge_base" collection
             docs = db.collection('knowledge_base').stream()
 
-            # Define an empty list to hold the data
-            data = []
+            # Load the existing CSV file into a Pandas DataFrame
             path = os.path.dirname(__file__)
-            # Iterate through each document and append the question and answer fields to the data list
-            for doc in docs:
-                data.append(['"' + doc.to_dict()['question'] + '"', '"' + doc.to_dict()['answer'] + '"'])
-
-            # Load the existing CSV file into a Pandas DataFrame and verify that each row has exactly two columns
             df = pd.read_csv(path+'/training_data.csv', header=0, names=['prompt', 'completion'])
-            if len(df.columns) != 2:
-                df = df[['prompt', 'completion']]
-                df.to_csv(path+'/training_data.csv', index=False, quoting=2)
+
+            # Drop any rows that have missing values or more than two columns
+            df.dropna(inplace=True)
+            df = df[df.apply(lambda row: len(row) == 2, axis=1)]
+
+            # Convert the DataFrame to a set of tuples to check for duplicates
+            existing_data = set(df.apply(lambda row: tuple(row), axis=1))
+
+            # Iterate through each document and append the question and answer fields to the data list
+            data = []
+            for doc in docs:
+                question = doc.to_dict()['question']
+                answer = doc.to_dict()['answer']
+                # Check if the row already exists in the set of existing data
+                if (question, answer) not in existing_data:
+                    data.append({'prompt': question, 'completion': answer})
+                    # Add the new row to the set of existing data
+                    existing_data.add((question, answer))
 
             # Append the new data to the DataFrame
-            new_df = pd.DataFrame(data, columns=['prompt', 'completion'])
-            df = pd.concat([df, new_df], ignore_index=True)
-
-            # Verify that each row in the DataFrame has exactly two columns
-            if len(df.columns) != 2:
-                raise ValueError("The CSV file should have exactly two columns: 'prompt' and 'completion'.")
+            if len(data) > 0:
+                new_df = pd.DataFrame(data, columns=['prompt', 'completion'])
+                df = pd.concat([df, new_df], ignore_index=True)
 
             # Write the updated DataFrame back to the CSV file, in append mode with double quotes around each field
-            df.to_csv(path+'/training_data.csv', mode='w', header=True, index=False, quoting=1)
+            df.to_csv(path+'/training_data.csv', mode='w', header=True, index=False, quoting=csv.QUOTE_ALL)
 
             # Delete all the processed documents from "knowledge_base" collection
             for doc in docs:
