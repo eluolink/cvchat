@@ -25,7 +25,7 @@ st.set_page_config(layout="wide", page_icon="💬", page_title="CVChat")
 
 # Display the header for the application using HTML markdown
 st.markdown(
-    "<h1 style='text-align: center;'>Welcome to CVChat, an AI that knows Ilya better then anyone else! 💬</h1>",
+    "<h1 style='text-align: center;'>Welcome to CVChat, an AI that knows Ilya better than anyone else! 💬</h1>",
     unsafe_allow_html=True)
 
 # Allow the user to enter their OpenAI API key
