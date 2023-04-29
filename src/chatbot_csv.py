@@ -18,6 +18,7 @@ from langchain.vectorstores import FAISS
 from firebase_admin import credentials
 from firebase_admin import firestore
 from datetime import datetime
+from PIL import Image
 
 # Set the Streamlit page configuration, including the layout and page title/icon
 st.set_page_config(layout="wide", page_icon="💬", page_title="CVChat")
@@ -288,11 +289,18 @@ async def main():
                 except Exception as e:
                     st.error(f"Error: {str(e)}")
 
+
+
     # Create an expander for the "About" section
     about = st.sidebar.expander("About 🤖")
-    
+    image = Image.open('schema.png')
     # Write information about the chatbot in the "About" section 
     about.write("#### If you're satisfied with the answers - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
+    project = st.sidebar.button('Project schema')
+    if project:
+        dial = st.dialog("Project schema")
+        with dial:
+            st.image(image, caption='Project schema')
     logout = st.sidebar.button('Logout')
     if logout:
         st.session_state['auth']=False
