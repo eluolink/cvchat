@@ -292,13 +292,13 @@ async def main():
 
 
     # Create an expander for the "About" section
-    about = st.sidebar.expander("About 🤖")
     project = st.sidebar.expander("Project schema")
     path = os.path.dirname(__file__)
-    image = Image.open(path+'/schema.png')
+    project.image(path+'/schema.png')
+    about = st.sidebar.expander("About 🤖")    
     # Write information about the chatbot in the "About" section 
     about.write("#### If you're satisfied with the answers - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
-    project.image(path+'/schema.png')
+    
     logout = st.sidebar.button('Logout')
     if logout:
         st.session_state['auth']=False
