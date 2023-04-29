@@ -298,7 +298,7 @@ async def main():
     image = Image.open(path+'/schema.png')
     # Write information about the chatbot in the "About" section 
     about.write("#### If you're satisfied with the answers - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
-    project.write(st.image(image, caption='Project schema'))
+    project.image(path+'/schema.png')
     logout = st.sidebar.button('Logout')
     if logout:
         st.session_state['auth']=False
