@@ -293,7 +293,7 @@ async def main():
 
     # Create an expander for the "About" section
     about = st.sidebar.expander("About 🤖")
-    image = Image.open('schema.png')
+    image = Image.open(path+'/schema.png')
     # Write information about the chatbot in the "About" section 
     about.write("#### If you're satisfied with the answers - you can contact Ilya via [Linkedin](https://www.linkedin.com/in/linkilya/) or ⚡[Telegram](https://t.me/eli_eth)")
     project = st.sidebar.button('Project schema')
