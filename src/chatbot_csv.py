@@ -15,7 +15,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.vectorstores import FAISS
-
 from firebase_admin import credentials
 from firebase_admin import firestore
 from datetime import datetime
@@ -120,23 +119,6 @@ async def main():
             doc_ref = db.collection("messages_collection").document(st.session_state['nick'])
             path = os.path.dirname(__file__)
             uploaded_file = open(path+'/training_data.csv',"rb")
-
-            # If the user has uploaded a file, display it in an expander
-            #if uploaded_file is not None:
-            #    def show_user_file(uploaded_file):
-            #        file_container = st.expander("Your CSV file :")
-            #        shows = pd.read_csv(uploaded_file)
-            #        uploaded_file.seek(0)
-            #        file_container.write(shows)
-                    
-            #    show_user_file(uploaded_file)
-                
-            # If the user has not uploaded a file, display a message asking them to do so
-            #else :
-            #   st.sidebar.info(
-            #   "👆 Upload your CSV file to get started, "
-            #    "sample for try : [fishfry-locations.csv](https://drive.google.com/file/d/18i7tN2CqrmoouaSqm3hDfAk17hmWx94e/view?usp=sharing)" 
-            #    )
         
             if uploaded_file :
                 print('About to start')
@@ -145,6 +127,7 @@ async def main():
                     print('About to start2')
                     async def storeDocEmbeds(file, filename):
                         print('Starting to create vectors...')
+
                         # Write the uploaded file to a temporary file
                         with tempfile.NamedTemporaryFile(mode="wb", delete=False) as tmp_file:
                             tmp_file.write(file)
@@ -157,6 +140,7 @@ async def main():
                         # Create an embeddings object using Langchain
                         embeddings = OpenAIEmbeddings()
                         print('Starting to create vectors...Stage 2!')
+
                         # Store the embeddings vectors using FAISS
                         vectors = FAISS.from_documents(dataset, embeddings)
                         os.remove(tmp_file_path)
