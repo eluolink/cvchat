@@ -74,8 +74,7 @@ async def main():
         if st.session_state['auth']:
             holder1.empty()
             holder2.empty()
-            # Allow the user to upload a CSV file
-            #uploaded_file = st.sidebar.file_uploader("upload", type="csv", label_visibility="hidden")
+            
             # Retrieve all documents from "knowledge_base" collection
             docs = db.collection('knowledge_base').stream()
 
@@ -121,24 +120,23 @@ async def main():
             doc_ref = db.collection("messages_collection").document(st.session_state['nick'])
             path = os.path.dirname(__file__)
             uploaded_file = open(path+'/training_data.csv',"rb")
-            #uploaded_file = uploaded_file.read("training_data.csv")
-            #print(uploaded_file)
+
             # If the user has uploaded a file, display it in an expander
-            if uploaded_file is not None:
-                def show_user_file(uploaded_file):
-                    file_container = st.expander("Your CSV file :")
-                    shows = pd.read_csv(uploaded_file)
-                    uploaded_file.seek(0)
-                    file_container.write(shows)
+            #if uploaded_file is not None:
+            #    def show_user_file(uploaded_file):
+            #        file_container = st.expander("Your CSV file :")
+            #        shows = pd.read_csv(uploaded_file)
+            #        uploaded_file.seek(0)
+            #        file_container.write(shows)
                     
-                show_user_file(uploaded_file)
+            #    show_user_file(uploaded_file)
                 
             # If the user has not uploaded a file, display a message asking them to do so
-            else :
-                st.sidebar.info(
-                "👆 Upload your CSV file to get started, "
-                "sample for try : [fishfry-locations.csv](https://drive.google.com/file/d/18i7tN2CqrmoouaSqm3hDfAk17hmWx94e/view?usp=sharing)" 
-                )
+            #else :
+            #   st.sidebar.info(
+            #   "👆 Upload your CSV file to get started, "
+            #    "sample for try : [fishfry-locations.csv](https://drive.google.com/file/d/18i7tN2CqrmoouaSqm3hDfAk17hmWx94e/view?usp=sharing)" 
+            #    )
         
             if uploaded_file :
                 print('About to start')
